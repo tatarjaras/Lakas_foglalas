@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "oQypCiSHyuvev8iFbHHoo5u5c1JXbF2Mr43qTiV2hwjItwHE7FEW8+YjCnfL8AkhR37o3Dv/fG6y1yPwovJYgQ==",
+  "dgSpecHash": "n6lt/MMo5fpDbl2VV7MqdKEGK8dDddS9O3scbBAsottDsVbXvY+5H3ZDOK1aENUYnZBFcue7F8FmMu+U373emg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Vizsga\\source\\repos\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj",
+  "projectFilePath": "C:\\Users\\Vizsga\\Desktop\\Vizsga\\Backend\\Lakas_foglalas\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Vizsga\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\Vizsga\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",

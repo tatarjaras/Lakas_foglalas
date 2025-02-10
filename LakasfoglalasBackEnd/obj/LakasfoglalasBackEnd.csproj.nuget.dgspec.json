@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vizsga\\source\\repos\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj": {}
+    "C:\\Users\\Vizsga\\Desktop\\Vizsga\\Backend\\Lakas_foglalas\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vizsga\\source\\repos\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj": {
+    "C:\\Users\\Vizsga\\Desktop\\Vizsga\\Backend\\Lakas_foglalas\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vizsga\\source\\repos\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\Vizsga\\Desktop\\Vizsga\\Backend\\Lakas_foglalas\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj",
         "projectName": "LakasfoglalasBackEnd",
-        "projectPath": "C:\\Users\\Vizsga\\source\\repos\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj",
+        "projectPath": "C:\\Users\\Vizsga\\Desktop\\Vizsga\\Backend\\Lakas_foglalas\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd.csproj",
         "packagesPath": "C:\\Users\\Vizsga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vizsga\\source\\repos\\LakasfoglalasBackEnd\\LakasfoglalasBackEnd\\obj\\",
+        "outputPath": "C:\\Users\\Vizsga\\Desktop\\Vizsga\\Backend\\Lakas_foglalas\\LakasfoglalasBackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
