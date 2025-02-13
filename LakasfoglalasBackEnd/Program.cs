@@ -6,6 +6,7 @@ using System.Text;
 
 namespace LakasfoglalasBackEnd
 {
+    //hello world
     public class Program
     {
         public static int SaltLength = 64;
