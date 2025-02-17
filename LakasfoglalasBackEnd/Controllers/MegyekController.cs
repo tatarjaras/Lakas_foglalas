@@ -14,7 +14,7 @@ namespace LakasfoglalasBackEnd.Controllers
 
         public async Task<IActionResult> GetFull(string token)
         {
-            if (Program.LoggedInUsers.ContainsKey(token) && Program.LoggedInUsers[token].PermissionId == 9)
+            if (Program.LoggedInUsers.ContainsKey(token))
             {
                 try
                 {
