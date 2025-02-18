@@ -55,11 +55,6 @@ public partial class LakasfoglalasContext : DbContext
                 .HasForeignKey(d => d.FelhasznaloId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("eladasok_ibfk_3");
-
-            entity.HasOne(d => d.Lakas).WithMany(p => p.Eladasoks)
-                .HasForeignKey(d => d.LakasId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("eladasok_ibfk_2");
         });
 
         modelBuilder.Entity<Lakasok>(entity =>
