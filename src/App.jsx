@@ -1,10 +1,22 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { Home } from "./Home";
+import axios from "axios";
+import { useEffect } from "react";
 import './Lakasfoglalas.css';
 
+const API_BASE_URL = 'http://localhost:5000/api/';
 export const App = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const [varosok, setVarosok] = useState([]);
+  useEffect(() => {
+    axios.get(`${API_BASE_URL}Varosok/token`)
+      .then(response => {
+        console.log(response.data);
+        setVarosok(response.data);
+      })
+      .catch(error => console.error('Hiba történt:', error));
+  }, []);
 
   const openForm = () => setShowLogin(true);
   const closeForm = () => setShowLogin(false);
@@ -47,14 +59,11 @@ export const App = () => {
       </nav>
 
       <nav className="side-nav bg-dark text-white p-0">
-        <NavLink to="#" className="side-link d-block text-white fs-6">Budapest</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Debrecen</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Miskolc</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Szeged</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Pécs</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Győr</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Kecskemét</NavLink>
-        <NavLink to="#" className="side-link d-block text-white fs-6">Nyíregyháza</NavLink>
+        {varosok.map((varos) => (
+          <div key={varos.id} className="side-link d-block text-white fs-6">
+          <NavLink to="#" className="side-link d-block text-white fs-6">{varos.Varos}</NavLink>
+          </div>
+        ))}
       </nav>
       <div className="container-fluid d-flex">
         <div className="content flex-grow-1 p-3">
