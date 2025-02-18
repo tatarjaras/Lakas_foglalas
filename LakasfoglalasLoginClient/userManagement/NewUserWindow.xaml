@@ -1,0 +1,56 @@
+﻿<Window x:Class="LakasfoglalasLoginClient.userManagement.NewUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LakasfoglalasLoginClient.userManagement"
+        mc:Ignorable="d"
+                Title="NewUserWindow" Height="600" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label>Felhasználónév:</Label>
+            <TextBox x:Name="tbxFelhasznaloNev" Text="UjEmber"/>
+            <Label>Jelszó:</Label>
+            <PasswordBox x:Name="pbxJelszo1" Password="Titkos1"/>
+            <Label>Jelszó még egyszer:</Label>
+            <PasswordBox x:Name="pbxJelszo2" Password="Titkos1"/>
+            <Label>Teljes név:</Label>
+            <TextBox x:Name="tbxTeljesNev" Text="Új ember"/>
+            <Label>Email:</Label>
+            <TextBox x:Name="tbxEmail"/>
+            <Label>Jogosultság:</Label>
+            <ComboBox x:Name="cbxPermission">
+                <ComboBoxItem Content="9"/>
+                <ComboBoxItem Content="1"/>
+            </ComboBox>
+            <CheckBox x:Name="cbActive" Content="Aktív" IsChecked="True"/>
+            <Label>Profilkép</Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Image x:Name="imgProfilkep"
+                   Width="100"
+                   Height="100"
+                   Stretch="UniformToFill"
+                   Margin="5"/>
+                <TextBlock x:Name="tbProfilkep"
+                       Text="Nincs kiválasztva"
+                       VerticalAlignment="Center"
+                       Margin="5"/>
+                <Button Content="Kép kiválasztása"
+                    Height="40"
+                    Padding="10"
+                    Click="ImageSelect_Click"
+                    Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Mentés" Margin="5" Padding="10" Click="Mentes_Click"/>
+            <Button Content="Mésge" Margin="5" Padding="10" Click="Megse_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

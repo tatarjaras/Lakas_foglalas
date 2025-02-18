@@ -1,0 +1,41 @@
+﻿<Window x:Class="LakasfoglalasLoginClient.userManagement.NewLakasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LakasfoglalasLoginClient.userManagement"
+        mc:Ignorable="d"
+        Title="NewLakasWindow" Height="600" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label>Utca:</Label>
+            <TextBox x:Name="tbxUtca" Text=""/>
+            <Label>Meret:</Label>
+            <TextBox x:Name="tbxMeret" Text=""/>
+            <Label>Szobák száma:</Label>
+            <ComboBox x:Name="cbxSzobakSzama" >
+                <ComboBoxItem Content="1"/>
+                <ComboBoxItem Content="5"/>
+                <ComboBoxItem Content="10"/>
+            </ComboBox>
+            <Label>Ár:</Label>
+            <TextBox x:Name="tbxAr" Text=""/>
+            <Label>Leirás:</Label>
+            <TextBox x:Name="tbxLeiras" />
+            <Label>FelhasznaloID:</Label>
+            <ComboBox x:Name="cbxFelhasznaloID"/>
+            <Label>VarosID:</Label>
+            <ComboBox x:Name="cbxVarosID"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Mentés" Margin="5" Padding="10" Click="LMentes_Click"/>
+            <Button Content="Mésge" Margin="5" Padding="10" Click="LMegse_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

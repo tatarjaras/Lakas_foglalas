@@ -1,0 +1,41 @@
+﻿<Window x:Class="LakasfoglalasLoginClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LakasfoglalasLoginClient"
+        mc:Ignorable="d"
+        Title="Lakasfoglalas" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem Header="Bejelentkezés"
+                      Click="OpenLoginWindow"
+                      Name="mitemBejelentkezes"/>
+            <MenuItem Header="Felhasználók" 
+                      IsEnabled="False"
+                      Name="mitemFelhasznalok">
+                <MenuItem Header="Felhasználók listázása"
+                          Click="UserListWindow"/>
+                <MenuItem Header="Felhasználó rögzítése"
+                          Click="HozzaadWindow"/>
+                <MenuItem Header="Felhasználó módosítása/törlése"
+                          Click="ModositasWindow"/>
+            </MenuItem>
+            <MenuItem Header="Lakások" 
+          IsEnabled="True"
+          Name="mitemLakasok">
+                <MenuItem Header="Lakások listázása"
+              Click="LakasListWindow"/>
+                <MenuItem Header="Lakások rögzítése"
+              Click="LakasHozzaad"/>
+                <MenuItem Header="Lakások módosítása/törlése"
+              Click="ModositasWindow"/>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>
+
