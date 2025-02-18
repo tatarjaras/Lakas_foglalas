@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\Vizsga\source\repos\LakasfoglalasBackEnd\LakasfoglalasBackEnd\bin\Release\net8.0\publish\</_PublishTargetUrl>
-    <History>True|2025-02-10T10:22:20.6820827Z;True|2025-01-27T13:45:07.2692237+01:00;True|2025-01-27T12:45:25.1434297+01:00;True|2025-01-27T11:16:04.8614499+01:00;</History>
+    <_PublishTargetUrl>C:\Users\Vizsga\source\repos\Lakas_foglalas\LakasfoglalasBackEnd\bin\Release\net8.0\publish\</_PublishTargetUrl>
+    <History>True|2025-02-17T11:29:12.4782835Z;True|2025-02-10T11:22:20.6820827+01:00;True|2025-01-27T13:45:07.2692237+01:00;True|2025-01-27T12:45:25.1434297+01:00;True|2025-01-27T11:16:04.8614499+01:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

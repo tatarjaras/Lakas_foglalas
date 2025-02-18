@@ -21,7 +21,7 @@ public partial class Lakasok
 
     public int VarosId { get; set; }
 
-    public virtual ICollection<Eladasok>? Eladasoks { get; set; } = new List<Eladasok>();
+    public bool Eladasoks { get; set; }
 
     public virtual User? Felhasznalo { get; set; } = null!;
 
