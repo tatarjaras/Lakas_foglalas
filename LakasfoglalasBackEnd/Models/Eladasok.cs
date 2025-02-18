@@ -11,7 +11,7 @@ public partial class Eladasok
 
     public int LakasId { get; set; }
 
-    public virtual User Felhasznalo { get; set; } = null!;
+    public virtual User? Felhasznalo { get; set; } = null!;
 
-    public virtual Lakasok Lakas { get; set; } = null!;
+    public virtual Lakasok? Lakas { get; set; } = null!;
 }

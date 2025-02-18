@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace LakasfoglalasBackEnd.Models;
 
@@ -23,7 +24,8 @@ public partial class User
 
     public string ProfilePicturePath { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<Eladasok> Eladasoks { get; set; } = new List<Eladasok>();
-
+    [JsonIgnore]
     public virtual ICollection<Lakasok> Lakasoks { get; set; } = new List<Lakasok>();
 }

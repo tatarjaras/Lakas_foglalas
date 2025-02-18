@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace LakasfoglalasBackEnd.Models;
 
@@ -21,7 +22,10 @@ public partial class Lakasok
 
     public int VarosId { get; set; }
 
-    public bool Eladasoks { get; set; }
+    public bool Eladva { get; set; }
+
+    [JsonIgnore]
+    public virtual ICollection<Eladasok> Eladasoks { get; set; } = new List<Eladasok>();
 
     public virtual User? Felhasznalo { get; set; } = null!;
 

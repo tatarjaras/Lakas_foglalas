@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LakasfoglalasBackEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3459c281086ef1c5dd6b670c590306c06803a4fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35de8626c87e7277eb4f4262c3d8f417841dbd89")]
 [assembly: System.Reflection.AssemblyProductAttribute("LakasfoglalasBackEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LakasfoglalasBackEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
