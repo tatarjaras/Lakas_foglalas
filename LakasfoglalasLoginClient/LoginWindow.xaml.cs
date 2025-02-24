@@ -33,10 +33,10 @@ namespace LakasfoglalasLoginClient
             var response = await client.PostAsync($"api/Login/SaltRequest/{tbxFelhasznalonev.Text}",
                 new StringContent(tbxFelhasznalonev.Text, Encoding.UTF8, "text/plain"));
             string salt = await response.Content.ReadAsStringAsync();
-            MessageBox.Show(salt);
+           
 
             string tmpHash = MainWindow.CreateSHA256(tbxJelszo.Password + salt);
-            MessageBox.Show(tmpHash);
+
             LoginDTO dtoUser = new LoginDTO()
             {
                 LoginName = tbxFelhasznalonev.Text,
@@ -51,7 +51,7 @@ namespace LakasfoglalasLoginClient
 
             LoggedUser bejelentkezett =
                 JsonSerializer.Deserialize<LoggedUser>(content);
-            MessageBox.Show(bejelentkezett.Token);
+
 
             string[] darabok = content.Split('"');
             string tokenem = darabok[darabok.Length - 2];

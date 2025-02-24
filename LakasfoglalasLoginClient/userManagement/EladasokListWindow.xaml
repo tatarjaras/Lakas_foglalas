@@ -1,0 +1,44 @@
+﻿<Window x:Class="LakasfoglalasLoginClient.userManagement.EladasokListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LakasfoglalasLoginClient.userManagement"
+        mc:Ignorable="d"
+                Title="EladasokListWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="btnBetoltesE"
+                Content="Betöltés"
+                Click="btnBetoltesE_Click"
+                Width="100"
+                Margin="10"/>
+        <DataGrid x:Name="dgEladas"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeRows="False"
+                  CanUserResizeColumns="False"
+                  CanUserSortColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  Grid.RowSpan="2"
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="FelhasznaloId"
+                                    Binding="{Binding FelhasznaloId}"/>
+                <DataGridTextColumn Header="LakasId"
+                                    Binding="{Binding LakasId}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

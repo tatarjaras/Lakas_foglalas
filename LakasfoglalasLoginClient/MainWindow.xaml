@@ -12,6 +12,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu>
+            
             <MenuItem Header="Bejelentkezés"
                       Click="OpenLoginWindow"
                       Name="mitemBejelentkezes"/>
@@ -26,7 +27,8 @@
                           Click="ModositasWindow"/>
             </MenuItem>
             <MenuItem Header="Lakások" 
-          IsEnabled="True"
+                      
+          IsEnabled="False"
           Name="mitemLakasok">
                 <MenuItem Header="Lakások listázása"
               Click="LakasListWindow"/>
@@ -35,6 +37,7 @@
                 <MenuItem Header="Lakások módosítása/törlése"
               Click="ModositasWindow"/>
             </MenuItem>
+            <MenuItem Header="Eladasok" Click="Eladasok" IsEnabled="False"/>
         </Menu>
     </Grid>
 </Window>
