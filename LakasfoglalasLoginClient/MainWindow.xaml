@@ -35,9 +35,9 @@
                 <MenuItem Header="Lakások rögzítése"
               Click="LakasHozzaad"/>
                 <MenuItem Header="Lakások módosítása/törlése"
-              Click="ModositasWindow"/>
+              Click="LakasModositas"/>
             </MenuItem>
-            <MenuItem Header="Eladasok" Click="Eladasok" IsEnabled="False"/>
+            <MenuItem Header="Eladasok" Name="mitemeladasok" Click="Eladasok" IsEnabled="False"/>
         </Menu>
     </Grid>
 </Window>

@@ -66,7 +66,7 @@ namespace LakasfoglalasLoginClient
             if (uId != "")
             {
                 mitemFelhasznalok.IsEnabled = true;
-                mitemBejelentkezes.IsEnabled = true;
+                mitemeladasok.IsEnabled = true;
                 mitemLakasok.IsEnabled = true;
                 mitemBejelentkezes.IsEnabled = false;
             }
@@ -110,6 +110,12 @@ namespace LakasfoglalasLoginClient
         {
             EladasokListWindow eladasoklistwindow = new EladasokListWindow();
             eladasoklistwindow.ShowDialog();
+        }
+
+        private void LakasModositas(object sender, RoutedEventArgs e)
+        {
+            EditLakasWindow editLakasWindow = new EditLakasWindow();
+            editLakasWindow.ShowDialog();
         }
     }
 }
