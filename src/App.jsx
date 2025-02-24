@@ -4,6 +4,8 @@ import { Home } from "./Home";
 import axios from "axios";
 import { useEffect } from "react";
 import './Lakasfoglalas.css';
+import { Login } from "./Login";
+import { Link } from "react-router-dom";
 
 const API_BASE_URL = 'http://localhost:5000/api/';
 export const App = () => {
@@ -40,22 +42,12 @@ export const App = () => {
                 <NavLink to="/" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Regisztráció</NavLink>
               </li>
             </ul>
-            <button className="btn btn-outline-light" onClick={openForm}>Login</button>
+            <button 
+              className="btn btn-light ms-3"> <Link className="nav-link" to="/login">
+              <i className="bi bi-person-circle" style={{ fontSize: '24px' }}>Login</i></Link>
+            </button>
           </div>
         </div>
-        {showLogin && (
-        <div className="form-popup position-fixed top-50 start-50 translate-middle bg-white p-4 border shadow" id="myForm">
-          <form className="form-container">
-            <h1>Login</h1>
-            <label htmlFor="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required className="form-control mb-2" />
-            <label htmlFor="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required className="form-control mb-2" />
-            <button type="submit" className="btn btn-success w-100 mb-2">Login</button>
-            <button type="button" className="btn btn-danger w-100" onClick={closeForm}>Close</button>
-          </form>
-        </div>
-      )}
       </nav>
 
       <nav className="side-nav bg-dark text-white p-0">
@@ -69,6 +61,7 @@ export const App = () => {
         <div className="content flex-grow-1 p-3">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
           
         </div>
