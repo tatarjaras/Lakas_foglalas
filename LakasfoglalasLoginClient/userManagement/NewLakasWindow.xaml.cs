@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,23 +26,54 @@ namespace LakasfoglalasLoginClient.userManagement
     public partial class NewLakasWindow : Window
     {
         public HttpClient? client;
-        public List<int> varosok = new List<int>();
+        public static List<Varosok> varosok = new List<Varosok>();
+        public List<string> varosnevek = new List<string>();
         public List<int> userek = new List<int>();
 
         public NewLakasWindow()
         {
             InitializeComponent();
-            varosok.Add(1);
-            varosok.Add(2);
-            varosok.Add(3);
-            varosok.Add(4);
+
             userek.Add(1);
-            userek.Add(11);
-            userek.Add(12);
-            cbxVarosID.ItemsSource = varosok;
+            //userek.Add(11);
+            //userek.Add(12);
+            GetVarosok();
+            cbxVarosID.ItemsSource = varosnevek;
             cbxFelhasznaloID.ItemsSource = userek;
             client = MainWindow.sharedClient;
             string currentDir = Directory.GetCurrentDirectory();
+        }
+
+        private static int kereses(string varosnev){
+            int aktId = -1;
+            foreach (Varosok v in varosok)
+            {
+                if (v.Varos ==  varosnev)
+                {
+                    aktId = v.Id;
+                    break;
+                }
+            }
+            return aktId;
+            }
+
+        private async void GetVarosok()
+        {
+            try
+            {
+                string url = $"{MainWindow.sharedClient.BaseAddress}api/Varosok/{MainWindow.uId}?token={MainWindow.uId}"; //A backenden a végpont urlje
+                List<Varosok> result = await MainWindow.sharedClient.GetFromJsonAsync<List<Varosok>>(url);
+                if(result is not null)
+                {
+                    varosok = (List<Varosok>)result;
+                    varosnevek = result.Select(v => v.Varos).ToList();
+                    cbxVarosID.ItemsSource = varosnevek;
+                }
+            }
+            catch (Exception ex)  
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private async void LMentes_Click(object sender, RoutedEventArgs e)
         {
@@ -66,7 +98,7 @@ namespace LakasfoglalasLoginClient.userManagement
                         Ar = int.Parse(tbxAr.Text),
                         Leiras = tbxLeiras.Text,
                         FelhasznaloId = int.Parse(cbxFelhasznaloID.SelectedItem.ToString()),
-                        VarosId =  int.Parse(cbxVarosID.SelectedItem.ToString()),
+                        VarosId =  kereses(cbxVarosID.Text),
                         Eladasoks=false
                     };
                     string toSend = JsonSerializer.Serialize(newlakas, JsonSerializerOptions.Default);
@@ -74,7 +106,7 @@ namespace LakasfoglalasLoginClient.userManagement
                     var response = await client.PostAsync($"api/Lakasok/{MainWindow.uId}?token={MainWindow.uId}", content);
                     string rcontent = await response.Content.ReadAsStringAsync();
                     MessageBox.Show(rcontent);
-                    MessageBox.Show("anyád");
+                    
                 }
                 catch (Exception ex)
                 {
