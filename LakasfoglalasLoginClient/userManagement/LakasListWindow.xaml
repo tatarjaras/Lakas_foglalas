@@ -36,17 +36,17 @@
                 <DataGridTextColumn Header="Meret"
                                     Binding="{Binding Meret}"/>
                 <DataGridTextColumn Header="szobák száma"
-                                    Binding="{Binding Szobak_szama}"/>
+                                    Binding="{Binding SzobakSzama}"/>
                 <DataGridTextColumn Header="Ar"
                                     Binding="{Binding Ar}"/>
                 <DataGridTextColumn Header="Leiras"
                                     Binding="{Binding Leiras}"/>
                 <DataGridTextColumn Header="Eladva"
-                                    Binding="{Binding Eladva}"/>
+                                    Binding="{Binding Eladasoks}"/>
                 <DataGridTextColumn Header="FelhasznaloID"
-                                    Binding="{Binding FelhasznaloID}"/>
+                                    Binding="{Binding FelhasznaloId}"/>
                 <DataGridTextColumn Header="VarosID"
-                                    Binding="{Binding VarosID}"/>
+                                    Binding="{Binding VarosId}"/>
             </DataGrid.Columns>
         </DataGrid>
 

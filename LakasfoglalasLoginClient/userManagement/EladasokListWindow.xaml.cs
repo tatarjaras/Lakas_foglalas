@@ -23,21 +23,21 @@ namespace LakasfoglalasLoginClient.userManagement
     public partial class EladasokListWindow : Window
     {
 
-        public HttpClient? clientE;
+        public HttpClient? client;
 
         private static List<Eladasok> eladas = new List<Eladasok>();
 
         public EladasokListWindow()
         {
             InitializeComponent();
-            clientE = MainWindow.sharedClient;
+            client = MainWindow.sharedClient;
         }
         private async Task LoadLakas()
         {
             try
             {
-                string url = $"{clientE.BaseAddress}api/Eladasok/{MainWindow.uId}?token={MainWindow.uId}";
-                eladas = await clientE.GetFromJsonAsync<List<Eladasok>>(url);
+                string url = $"{client.BaseAddress}api/Eladasok/{MainWindow.uId}?token={MainWindow.uId}";
+                eladas = await client.GetFromJsonAsync<List<Eladasok>>(url);
 
                 /*Másik lehetőség:
                 var response = await client.GetAsync(url);
