@@ -1,5 +1,6 @@
 ﻿
 using LakasfoglalasBackEnd.Models;
+using LakasfoglalasLoginClient.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,16 +28,13 @@ namespace LakasfoglalasLoginClient.userManagement
     {
         public HttpClient? client;
         public static List<Varosok> varosok = new List<Varosok>();
+        public static List<User> userek = new List<User>();
         public List<string> varosnevek = new List<string>();
-        public List<int> userek = new List<int>();
+        public List<string> usernevek = new List<string>();
 
         public NewLakasWindow()
         {
             InitializeComponent();
-
-            userek.Add(1);
-            //userek.Add(11);
-            //userek.Add(12);
             GetVarosok();
             cbxVarosID.ItemsSource = varosnevek;
             cbxFelhasznaloID.ItemsSource = userek;
@@ -44,7 +42,45 @@ namespace LakasfoglalasLoginClient.userManagement
             string currentDir = Directory.GetCurrentDirectory();
         }
 
-        private static int kereses(string varosnev){
+        private static int UserKereses(string usernev)
+        {
+            int aktId = -1;
+            foreach (User v in userek)
+            {
+                if (v.Name == usernev)
+                {
+                    aktId = v.Id;
+                    break;
+                }
+            }
+            return aktId;
+        }
+
+
+
+        private async void GetUserek()
+        {
+            try
+            {
+                string url = $"{MainWindow.sharedClient.BaseAddress}api/User/{MainWindow.uId}?token={MainWindow.uId}"; //A backenden a végpont urlje
+                List<User> result = await MainWindow.sharedClient.GetFromJsonAsync<List<User>>(url);
+                if (result is not null)
+                {
+                    userek = (List<User>)result;
+                    usernevek = result.Select(v => v.Name).ToList();
+                    cbxFelhasznaloID.ItemsSource = usernevek;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+
+        private static int VarosKereses(string varosnev){
             int aktId = -1;
             foreach (Varosok v in varosok)
             {
@@ -97,8 +133,8 @@ namespace LakasfoglalasLoginClient.userManagement
                         SzobakSzama = int.Parse(cbxSzobakSzama.Text),
                         Ar = int.Parse(tbxAr.Text),
                         Leiras = tbxLeiras.Text,
-                        FelhasznaloId = int.Parse(cbxFelhasznaloID.SelectedItem.ToString()),
-                        VarosId =  kereses(cbxVarosID.Text),
+                        FelhasznaloId = UserKereses(cbxFelhasznaloID.Text),
+                        VarosId =  VarosKereses(cbxVarosID.Text),
                         Eladasoks=false
                     };
                     string toSend = JsonSerializer.Serialize(newlakas, JsonSerializerOptions.Default);
