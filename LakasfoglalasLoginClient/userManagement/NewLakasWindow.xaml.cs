@@ -36,6 +36,7 @@ namespace LakasfoglalasLoginClient.userManagement
         {
             InitializeComponent();
             GetVarosok();
+            GetUserek();
             cbxVarosID.ItemsSource = varosnevek;
             cbxFelhasznaloID.ItemsSource = userek;
             client = MainWindow.sharedClient;
