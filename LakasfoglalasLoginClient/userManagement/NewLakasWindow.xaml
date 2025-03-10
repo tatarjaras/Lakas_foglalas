@@ -17,11 +17,8 @@
             <Label>Meret:</Label>
             <TextBox x:Name="tbxMeret" Text=""/>
             <Label>Szobák száma:</Label>
-            <ComboBox x:Name="cbxSzobakSzama" >
-                <ComboBoxItem Content="1"/>
-                <ComboBoxItem Content="5"/>
-                <ComboBoxItem Content="10"/>
-            </ComboBox>
+            <ComboBox x:Name="cbxSzobakSzama" />
+
             <Label>Ár:</Label>
             <TextBox x:Name="tbxAr" Text=""/>
             <Label>Leirás:</Label>

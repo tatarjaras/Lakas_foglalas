@@ -31,12 +31,14 @@ namespace LakasfoglalasLoginClient.userManagement
         public static List<User> userek = new List<User>();
         public List<string> varosnevek = new List<string>();
         public List<string> usernevek = new List<string>();
+        public List<string> szobakszam = new List<string>();
 
         public NewLakasWindow()
         {
             InitializeComponent();
             GetVarosok();
             GetUserek();
+            Szobak();
             cbxVarosID.ItemsSource = varosnevek;
             cbxFelhasznaloID.ItemsSource = userek;
             client = MainWindow.sharedClient;
@@ -55,6 +57,23 @@ namespace LakasfoglalasLoginClient.userManagement
                 }
             }
             return aktId;
+        }
+
+
+        private void Szobak()
+        {
+            try 
+            {
+                for (int i = 1; i < 11; i++)
+                {
+                    szobakszam.Add(i.ToString());
+                }
+                cbxSzobakSzama.ItemsSource = szobakszam;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message); 
+            }
         }
 
 
