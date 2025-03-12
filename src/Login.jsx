@@ -14,7 +14,7 @@ export const Login = () => {
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       setUser(parsedUser);
-      setAvatar(`http://images.balazska.nhely.hu/${parsedUser.profilePicturePath}`);
+      setAvatar(`avatar.jpg`);
     }
   }, []);
 

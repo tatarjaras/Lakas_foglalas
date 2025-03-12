@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import './Lakasfoglalas.css';
 import { Login } from "./Login";
 import { Link } from "react-router-dom";
+import { Registratio } from "./Registration";
 
 const API_BASE_URL = 'http://localhost:5000/api/';
 export const App = () => {
@@ -39,7 +40,7 @@ export const App = () => {
                 <NavLink to="/upload" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Feltöltés</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Regisztráció</NavLink>
+                <NavLink to="/Registration" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Regisztráció</NavLink>
               </li>
             </ul>
             <button 
@@ -62,6 +63,7 @@ export const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/Registration" element={<Registratio />} />
           </Routes>
           
         </div>
