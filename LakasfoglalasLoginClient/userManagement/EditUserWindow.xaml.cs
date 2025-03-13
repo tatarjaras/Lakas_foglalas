@@ -27,7 +27,7 @@ namespace LakasfoglalasLoginClient.userManagement
             InitializeComponent();
             client = MainWindow.sharedClient;
             string currentDir = Directory.GetCurrentDirectory();
-            imgProfilkep.Source = new BitmapImage(new Uri($"{currentDir}/default.jpg", UriKind.Absolute));
+            //imgProfilkep.Source = new BitmapImage(new Uri($"{currentDir}/default.jpg", UriKind.Absolute));
             tbProfilkep.Text = $"default.jpg";
         }
 

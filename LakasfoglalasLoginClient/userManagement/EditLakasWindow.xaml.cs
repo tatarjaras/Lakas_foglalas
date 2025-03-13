@@ -1,7 +1,12 @@
-﻿using System;
+﻿using LakasfoglalasBackEnd.Models;
+using LakasfoglalasLoginClient.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,14 +24,148 @@ namespace LakasfoglalasLoginClient.userManagement
     /// </summary>
     public partial class EditLakasWindow : Window
     {
+
+        public HttpClient? client;
+        public static List<Varosok> varosok = new List<Varosok>();
+        public static List<User> userek = new List<User>();
+        public List<string> varosnevek = new List<string>();
+        public List<string> usernevek = new List<string>();
+        public List<string> szobakszam = new List<string>();
         public EditLakasWindow()
         {
             InitializeComponent();
+            GetVarosok();
+            GetUserek();
+            Szobak();
+        }
+
+        private static int UserKereses(string usernev)
+        {
+            int aktId = -1;
+            foreach (User v in userek)
+            {
+                if (v.Name == usernev)
+                {
+                    aktId = v.Id;
+                    break;
+                }
+            }
+            return aktId;
+        }
+
+        private void Szobak()
+        {
+            try
+            {
+                for (int i = 1; i < 11; i++)
+                {
+                    szobakszam.Add(i.ToString());
+                }
+                cbxSzobakSzama.ItemsSource = szobakszam;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void GetUserek()
+        {
+            try
+            {
+                string url = $"{MainWindow.sharedClient.BaseAddress}api/User/{MainWindow.uId}?token={MainWindow.uId}"; //A backenden a végpont urlje
+                List<User> result = await MainWindow.sharedClient.GetFromJsonAsync<List<User>>(url);
+                if (result is not null)
+                {
+                    userek = (List<User>)result;
+                    usernevek = result.Select(v => v.Name).ToList();
+                    cbxFelhasznaloID.ItemsSource = usernevek;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+
+        private static int VarosKereses(string varosnev)
+        {
+            int aktId = -1;
+            foreach (Varosok v in varosok)
+            {
+                if (v.Varos == varosnev)
+                {
+                    aktId = v.Id;
+                    break;
+                }
+            }
+            return aktId;
+        }
+
+        private async void GetVarosok()
+        {
+            try
+            {
+                string url = $"{MainWindow.sharedClient.BaseAddress}api/Varosok/{MainWindow.uId}?token={MainWindow.uId}"; //A backenden a végpont urlje
+                List<Varosok> result = await MainWindow.sharedClient.GetFromJsonAsync<List<Varosok>>(url);
+                if (result is not null)
+                {
+                    varosok = (List<Varosok>)result;
+                    varosnevek = result.Select(v => v.Varos).ToList();
+                    cbxVarosID.ItemsSource = varosnevek;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void EMentes_Click(object sender, RoutedEventArgs e)
         {
+            string salt = MainWindow.GenerateSalt();
+            if (tbxUtca.Text is not null &&
+                tbxMeret.Text is not null &&
+                cbxSzobakSzama.SelectedValue is not null &&
+                tbxAr.Text is not null &&
+                tbxLeiras.Text is not null &&
+                cbxVarosID.SelectedValue is not null &&
+                cbxFelhasznaloID.SelectedValue is not null
+                )
+            {
+                try
+                {
+                    Lakasok newlakas = new()
+                    {
+                        Id = 0,
+                        Utca = tbxUtca.Text,
+                        Meret = int.Parse(tbxMeret.Text),
+                        SzobakSzama = int.Parse(cbxSzobakSzama.Text),
+                        Ar = int.Parse(tbxAr.Text),
+                        Leiras = tbxLeiras.Text,
+                        FelhasznaloId = UserKereses(cbxFelhasznaloID.Text),
+                        VarosId = VarosKereses(cbxVarosID.Text),
+                        Eladasoks = false
+                    };
+                    //string toSend = JsonSerializer.Serialize(newlakas, JsonSerializerOptions.Default);
+                    //var content = new StringContent(toSend, Encoding.UTF8, "application/json");
+                    //var response = await client.PostAsync($"api/Lakasok/{MainWindow.uId}?token={MainWindow.uId}", content);
+                    //string rcontent = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show("sikeres változtatások");
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Kitöltési hiba");
+            }
         }
 
         private void EMegse_Click(object sender, RoutedEventArgs e)
@@ -36,7 +175,7 @@ namespace LakasfoglalasLoginClient.userManagement
 
         private void ETorles_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("törlés sikeres");
         }
     }
 }
