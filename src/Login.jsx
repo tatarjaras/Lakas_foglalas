@@ -34,8 +34,9 @@ export const Login = () => {
         let userData = loginResponse.data;
         localStorage.setItem("felhasz", JSON.stringify(userData));
         setUser(userData);
-        setAvatar(`http://images.balazska.nhely.hu/${userData.profilePicturePath}`);
+        setAvatar(`${userData.profilePicturePath}`);
         alert(`Sikeres bejelentkezés! Felhasználó: ${userData.name}`);
+        window.location.reload();
       } else {
         alert("Hiba történt a bejelentkezéskor!");
       }
@@ -80,7 +81,7 @@ export const Login = () => {
         {user ? (
           <>
             <h2>Belépve: {user.name}</h2>
-            {avatar && <img src={avatar} width="60%" height="60%" alt="Avatar" style={{ marginTop: "20px", borderRadius: "50%" }} />}
+            {avatar && <img src={avatar} width="60%" height="60%" alt="Avatar" style={{ marginTop: "20px", borderRadius: "50%" }} />}<br />
             <button
               onClick={handleLogout}
               style={{

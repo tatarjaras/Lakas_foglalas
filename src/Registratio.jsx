@@ -9,7 +9,7 @@ export const Registratio = () => {
         jelszo: "",
         Name: "",
         email: "",
-        ProfilePicturePath: "default.jpg"
+        ProfilePicturePath: "avatar.jpg"
     });
     const navigate = useNavigate();
 
@@ -20,34 +20,33 @@ export const Registratio = () => {
 
       const generateSalt = (length) => {
         const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        let salt = "";
+        let SALT = "";
         for (let i = 0; i < length; i++) {
           const randomIndex = Math.floor(Math.random() * characters.length);
-          salt += characters.charAt(randomIndex);
+          SALT += characters.charAt(randomIndex);
         }
-        return salt;
+        return SALT;
       };
       const handleSubmit = async () => {
-        const salt = generateSalt(64);
-        const hashedPassword = sha256(formData.jelszo + salt);
+        const SALT = generateSalt(64);
+        const hashedPassword = sha256(formData.jelszo + SALT);
     
         const requestBody = {
-          id: 0,
+          Id: 0,
           loginNev: formData.loginNev,
           Name: formData.Name,
-          salt,
-          hash: hashedPassword,
-          email: formData.email,
-          jogosultsag: 1,
-          aktiv: 0,
-          regisztracioDatuma: new Date().toISOString(),
-          ProfilePicturePath: "default.jpg",
+          SALT,
+          HASH: hashedPassword,
+          Email: formData.email,
+          PermissionId: 1,
+          Active: 0,
+          ProfilePicturePath: "avatar.jpg",
         };
     
         console.log(requestBody);
     
         try {
-          const response = await axios.post("https://localhost:5001/api/Registry", requestBody);
+          const response = await axios.post("https://localhost:5000/api/Registry", requestBody);
           alert(response.data);
           navigate("/");
         } catch (error) {
