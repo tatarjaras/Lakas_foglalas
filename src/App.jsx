@@ -59,7 +59,7 @@ export const App = () => {
       <nav className="side-nav bg-dark text-white p-0">
         {varosok.map((varos) => (
           <div key={varos.id} className="side-link d-block text-white fs-6">
-          <NavLink to="#" className="side-link d-block text-white fs-6">{varos.Varos}</NavLink>
+          <NavLink to="#" className="side-link d-block text-white fs-6">{varos.varos}</NavLink>
           </div>
         ))}
       </nav>

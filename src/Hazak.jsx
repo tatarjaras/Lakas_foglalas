@@ -17,20 +17,20 @@ export const Hazak = () => {
     return (
         <div className="container mt-4">
           <h2 className="text-primary text-center mb-4">
-            <i className="bi bi-heart-pulse"></i> Lakasok
+            <i className="bi bi-house-door"></i> Lakasok
           </h2>
           <div className="row">
             {LakasList.map((lakas) => (
               <div key={lakas.id} className="col-md-6">
-                <div className="card shadow-sm mb-3">
+                <div className="card shadow-sm mb-3 ">
                   <div className="card-body text-center">
-                    <i className="bi bi-person-badge fs-1 text-secondary"></i>
-                    <h5 className="card-title mt-2">{lakas.utca}</h5>
-                    <p className="card-text text-muted">{lakas.meret}</p>
-                    <p className="card-text text-muted">{lakas.szobakSzama}</p>
-                    <p className="card-text text-muted">{lakas.ar}</p>
-                    <p className="card-text text-muted">{lakas.leiras}</p>
-                    <p className="card-text text-muted">{lakas.varosId}</p>
+                  <img src="missing.avif" alt="Lakás képe" className="img-fluid mb-3 float-start" style={{ maxHeight: "200px", objectFit: "cover" }} />
+                    <h5 className="card-title mt-2  text-end">Utca: {lakas.utca}</h5>
+                    <p className="card-text text-muted  text-end">Méret: {lakas.meret}m²</p>
+                    <p className="card-text text-muted  text-end">Szobák száma: {lakas.szobakSzama}db</p>
+                    <p className="card-text text-muted  text-end">Ár: {lakas.ar}.FT</p>
+                    <p className="card-text text-muted  text-end">Leirás: {lakas.leiras}</p>
+                    <p className="card-text text-muted  text-end">Város: {lakas.varosId}</p>
                   </div>
                 </div>
               </div>
