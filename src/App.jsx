@@ -7,6 +7,7 @@ import './Lakasfoglalas.css';
 import { Login } from "./Login";
 import { Link } from "react-router-dom";
 import { Registratio } from "./Registratio";
+import { Hazak } from "./Hazak";
 
 const API_BASE_URL = 'http://localhost:5000/api/';
 export const App = () => {
@@ -40,8 +41,12 @@ export const App = () => {
                 <NavLink to="/upload" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Feltöltés</NavLink>
               </li>
               <li className="nav-item">
+                <NavLink to="/Hazak" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Lakások</NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink to="/Registratio" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Regisztráció</NavLink>
               </li>
+              
             </ul>
             <button 
               className="btn btn-light ms-3"> <Link className="nav-link" to="/login">
@@ -64,6 +69,7 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Registratio" element={<Registratio />} />
+            <Route path="/Hazak" element={<Hazak />} />
           </Routes>
           
         </div>
