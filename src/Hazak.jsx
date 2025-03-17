@@ -31,6 +31,7 @@ export const Hazak = () => {
                     <p className="card-text text-muted  text-end">Ár: {lakas.ar}.FT</p>
                     <p className="card-text text-muted  text-end">Leirás: {lakas.leiras}</p>
                     <p className="card-text text-muted  text-end">Város: {lakas.varosId}</p>
+                    <button>Vásárlás</button>
                   </div>
                 </div>
               </div>
