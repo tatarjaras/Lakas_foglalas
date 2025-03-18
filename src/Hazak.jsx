@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route, NavLink, Link } from "react-router-dom";
+import {Vasarlas} from './Vasarlas';
+
 
 const API_BASE_URL = 'http://localhost:5000/api/';
 
@@ -31,7 +34,16 @@ export const Hazak = () => {
                     <p className="card-text text-muted  text-end">Ár: {lakas.ar}.FT</p>
                     <p className="card-text text-muted  text-end">Leirás: {lakas.leiras}</p>
                     <p className="card-text text-muted  text-end">Város: {lakas.varosId}</p>
-                    <button>Vásárlás</button>
+                    
+                    <button className="btn btn-dark ms-3"> 
+                      <Link className="nav-link" to="/Vasarlas">
+                        <i className="bi bi-cart" style={{ fontSize: '24px' }}>Vásárlás</i>
+                      </Link>
+                    </button>
+                    <Routes>
+                      <Route path="/Vasarlas" element={<Vasarlas />} />
+                    </Routes>
+                  
                   </div>
                 </div>
               </div>
