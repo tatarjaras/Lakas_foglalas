@@ -108,10 +108,11 @@ export const Registratio = () => {
                 margin: "10px",
                 padding: "10px 20px",
                 borderRadius: "5px",
-                backgroundColor: "#1e90ff",
-                color: "#fff",
+                backgroundColor: "white",
+                color: "black",
                 border: "none",
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
             >
               Regisztráció

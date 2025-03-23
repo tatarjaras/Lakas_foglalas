@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from "react";
 import axios from "axios";
 import sha256 from "js-sha256";
+import "./Lakasfoglalas.css";
+
 
 export const Login = () => {
   const [loginName, setLoginName] = useState("");
@@ -120,10 +122,11 @@ export const Login = () => {
                 margin: "10px",
                 padding: "10px 20px",
                 borderRadius: "5px",
-                backgroundColor: "#1e90ff",
-                color: "#fff",
+                backgroundColor: "white",
+                color: "black",
                 border: "none",
                 cursor: "pointer",
+                fontWeight: "bold",
               }}
             >
               Bejelentkezés
