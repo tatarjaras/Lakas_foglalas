@@ -3,13 +3,13 @@ import axios from 'axios';
 
 
 const API_BASE_URL = 'http://localhost:5000/api/';
-
+const id = 1;
 
 export const Vasarlas = () => {
     const [LakasList, setLakasList] = useState([]);
 
     useEffect(() => {
-        axios.get(`${API_BASE_URL}Lakasok/token`)
+        axios.get(`${API_BASE_URL}Lakasok/${id}token`)
             .then(response => {
                 console.log(response.data);
                 setLakasList(response.data);
@@ -17,10 +17,22 @@ export const Vasarlas = () => {
             .catch(error => console.error('Hiba történt:', error));
     }, []);
     return(
-        <div className="card shadow-lg p-4 border-success mt-4">
+      <div
+      style={{
+        position: "absolute",
+        top: "500px",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        padding: "20px",
+        borderRadius: "10px",
+        textAlign: "center",
+        color: "#fff",
+      }}
+    >
              
           <h2 className="lakas-title text-center mb-4">
-          <i className="bi bi-house-door"></i> Lakások/Házak
+          <i className="bi"></i>
           </h2>
         
           <div className="row">
@@ -40,6 +52,55 @@ export const Vasarlas = () => {
               </div>
             ))}
           </div>
-        </div>
+          
+        <h2>Vásárlás</h2>
+            <input
+              type="text"
+              name="Name"
+              placeholder="Teljes név"
+              
+              
+              style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
+            />
+            <input
+              type="text"
+              name="Bankszam"
+              placeholder="Bankártyaszám"
+              
+              
+              style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
+            />
+            <input
+              type="text"
+              name="email"
+              placeholder="E-mail"
+              
+              
+              style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
+            />
+            <input
+              type="password"
+              name="jelszo"
+              placeholder="Jelszó"
+               
+              
+              style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
+            /><br />
+            <button
+              style={{
+                margin: "10px",
+                padding: "10px 20px",
+                borderRadius: "5px",
+                backgroundColor: "white",
+                color: "black",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              Regisztráció
+            </button>
+      </div>
+        
                     
     );};

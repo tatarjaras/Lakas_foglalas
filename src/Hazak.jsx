@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route, NavLink, Link } from "react-router-dom";
-import {Vasarlas} from './Vasarlas';
-
 
 const API_BASE_URL = 'http://localhost:5000/api/';
+
 
 export const Hazak = () => {
     const [LakasList, setLakasList] = useState([]);
@@ -43,10 +42,7 @@ export const Hazak = () => {
                         <i className="bi bi-cart" style={{ fontSize: '24px' }}>Vásárlás</i>
                       </Link>
                     </button>
-                    <Routes>
-                      <Route path="/Vasarlas" element={<Vasarlas />} />
-                    </Routes>
-                  
+                    
                   </div>
                 </div>
               </div>

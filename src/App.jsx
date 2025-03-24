@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Registratio } from "./Registratio";
 import { Hazak } from "./Hazak";
 import { Feltolt } from "./Feltolt";
+import { Vasarlas } from "./Vasarlas";
 import "./Lakasfoglalas.css";
 
 // Háttérképek listája
@@ -90,21 +91,16 @@ export const App = () => {
         </div>
       </nav>
 
-      <nav className="side-nav bg-dark text-white p-0">
-        {varosok.map((varos) => (
-          <div key={varos.id} className="side-link d-block text-white fs-6">
-          <NavLink to="#" className="side-link d-block text-white fs-6">{varos.varos}</NavLink>
-          </div>
-        ))}
-      </nav>
+      
       <div className="container-fluid d-flex">
         <div className="content flex-grow-1 p-3">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/feltolt" element={<Feltolt />} />
+            <Route path="/Feltolt" element={<Feltolt />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Registratio" element={<Registratio />} />
             <Route path="/Hazak" element={<Hazak />} />
+            <Route path="/Vasarlas" element={<Vasarlas />} />
           </Routes>
           
         </div>
@@ -113,3 +109,11 @@ export const App = () => {
     );
   }
 
+  //93*
+//<nav className="side-nav bg-dark text-white p-0">
+//{varosok.map((varos) => (
+  //<div key={varos.id} className="side-link d-block text-white fs-6">
+  //<NavLink to="#" className="side-link d-block text-white fs-6">{varos.varos}</NavLink>
+//</div>
+//))}
+//</nav>
