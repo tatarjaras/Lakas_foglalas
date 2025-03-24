@@ -18,12 +18,13 @@ export const Hazak = () => {
             .catch(error => console.error('Hiba történt:', error));
     }, []);
     return (
-        <div className="container mt-4"  style={{ maxWidth: '20%' }}>
+       
           <div className="card shadow-lg p-4 border-success mt-4">
+             
           <h2 className="lakas-title text-center mb-4">
           <i className="bi bi-house-door"></i> Lakások/Házak
           </h2>
-        </div>
+        
           <div className="row">
             {LakasList.map((lakas) => (
               <div key={lakas.id} className="col-md-6">
