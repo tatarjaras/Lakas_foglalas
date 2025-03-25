@@ -11,6 +11,7 @@ import { Feltolt } from "./Feltolt";
 import { Vasarlas } from "./Vasarlas";
 import "./Lakasfoglalas.css";
 
+
 // Háttérképek listája
 const images = [
  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",

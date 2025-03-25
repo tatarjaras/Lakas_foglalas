@@ -57,7 +57,7 @@ export const Vasarlas = () => {
             <input
               type="text"
               name="Name"
-              placeholder="Teljes név"
+              placeholder="Kártyatulajdonos neve"
               
               
               style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
@@ -67,21 +67,24 @@ export const Vasarlas = () => {
               name="Bankszam"
               placeholder="Bankártyaszám"
               
-              
               style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
             />
+
+
+
+
             <input
               type="text"
-              name="email"
-              placeholder="E-mail"
+              name="date"
+              placeholder="Kártya lejáratidátuma (MM/YY)"
               
               
               style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
             />
             <input
               type="password"
-              name="jelszo"
-              placeholder="Jelszó"
+              name="CVC"
+              placeholder="CVC/CVV"
                
               
               style={{ margin: "10px", padding: "10px", borderRadius: "5px", width: "80%" }}
