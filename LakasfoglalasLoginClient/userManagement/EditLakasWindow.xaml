@@ -7,34 +7,54 @@
         mc:Ignorable="d"
                 Title="NewLakasWindow" Height="600" Width="500">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
-        <StackPanel>
-            <Label>Id:</Label>
-            <ComboBox Name="cbxId"/>
-            <Label>Utca:</Label>
-            <TextBox x:Name="tbxUtca" Text=""/>
-            <Label>Meret:</Label>
-            <TextBox x:Name="tbxMeret" Text=""/>
-            <Label>Szobák száma:</Label>
-            <ComboBox x:Name="cbxSzobakSzama" />
-            <Label>Ár:</Label>
-            <TextBox x:Name="tbxAr" Text=""/>
-            <Label>Leirás:</Label>
-            <TextBox x:Name="tbxLeiras" />
-            <Label>FelhasznaloID:</Label>
-            <ComboBox x:Name="cbxFelhasznaloID"/>
-            <Label>VarosID:</Label>
-            <ComboBox x:Name="cbxVarosID"/>
-        </StackPanel>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="40"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+    <Button x:Name="btnBetoltes"
+    Content="Betöltés"
+    Click="btnBetoltes_KliKk"
+    Width="100"
+    Margin="10"/>
+    <DataGrid x:Name="dgrLakas"
+      Grid.Row="1"
+      AutoGenerateColumns="False"
+      CanUserAddRows="False"
+      CanUserDeleteRows="False"
+      CanUserReorderColumns="False"
+      CanUserResizeRows="False"
+      CanUserResizeColumns="False"
+      CanUserSortColumns="False"
+      SelectionMode="Single"
+      SelectionUnit="FullRow"
+      Grid.RowSpan="2"
+      >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Utca"
+                        Binding="{Binding Utca}"/>
+                <DataGridTextColumn Header="Meret"
+                        Binding="{Binding Meret}"/>
+                <DataGridTextColumn Header="szobák száma"
+                        Binding="{Binding SzobakSzama}"/>
+                <DataGridTextColumn Header="Ar"
+                        Binding="{Binding Ar}"/>
+                <DataGridTextColumn Header="Leiras"
+                        Binding="{Binding Leiras}"/>
+                <DataGridTextColumn Header="Eladva"
+                        Binding="{Binding Eladasoks}"/>
+                <DataGridTextColumn Header="FelhasznaloID"
+                        Binding="{Binding FelhasznaloId}"/>
+                <DataGridTextColumn Header="VarosID"
+                        Binding="{Binding VarosId}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Mentés" Margin="5" Padding="10" Click="EMentes_Click"/>
-            <Button Content="Törlés" Margin="5" Padding="10" Click="ETorles_Click"/>
-            <Button Content="Mésge" Margin="5" Padding="10" Click="EMegse_Click"/>
-        </StackPanel>
+    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+        <Button Content="Módosítás" Margin="5" Padding="10" Click="Modositas_Click"/>
+        <Button Content="Törlés" Margin="5" Padding="10" Click="Torles_Click"/>
+        <Button Content="Mésge" Margin="5" Padding="10" Click="Megse_Click"/>
+    </StackPanel>
     </Grid>
 </Window>
 

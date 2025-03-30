@@ -26,156 +26,128 @@ namespace LakasfoglalasLoginClient.userManagement
     {
 
         public HttpClient? client;
-        public static List<Varosok> varosok = new List<Varosok>();
-        public static List<User> userek = new List<User>();
-        public List<string> varosnevek = new List<string>();
-        public List<string> usernevek = new List<string>();
-        public List<string> szobakszam = new List<string>();
+        private static List<Lakasok> lakas = new List<Lakasok>();
+
         public EditLakasWindow()
         {
             InitializeComponent();
-            GetVarosok();
-            GetUserek();
-            Szobak();
+            client = MainWindow.sharedClient;
         }
 
-        private static int UserKereses(string usernev)
-        {
-            int aktId = -1;
-            foreach (User v in userek)
-            {
-                if (v.Name == usernev)
-                {
-                    aktId = v.Id;
-                    break;
-                }
-            }
-            return aktId;
-        }
-
-        private void Szobak()
+        private async Task LoadLakas()
         {
             try
             {
-                for (int i = 1; i < 11; i++)
-                {
-                    szobakszam.Add(i.ToString());
-                }
-                cbxSzobakSzama.ItemsSource = szobakszam;
+                string url = $"{client.BaseAddress}api/Lakasok/{MainWindow.uId}?token={MainWindow.uId}";
+                lakas = await client.GetFromJsonAsync<List<Lakasok>>(url);
+                dgrLakas.ItemsSource = null;
+                dgrLakas.ItemsSource = lakas;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Hiba történt a lakások betöltésekor: {ex.Message}");
             }
         }
 
-        private async void GetUserek()
+        private async void btnBetoltes_KliKk(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string url = $"{MainWindow.sharedClient.BaseAddress}api/User/{MainWindow.uId}?token={MainWindow.uId}"; //A backenden a végpont urlje
-                List<User> result = await MainWindow.sharedClient.GetFromJsonAsync<List<User>>(url);
-                if (result is not null)
-                {
-                    userek = (List<User>)result;
-                    usernevek = result.Select(v => v.Name).ToList();
-                    cbxFelhasznaloID.ItemsSource = usernevek;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            await LoadLakas();
         }
 
-
-
-
-        private static int VarosKereses(string varosnev)
+        private async void Modositas_Click(object sender, RoutedEventArgs e)
         {
-            int aktId = -1;
-            foreach (Varosok v in varosok)
+            if (dgrLakas.SelectedItem is Lakasok utca)
             {
-                if (v.Varos == varosnev)
-                {
-                    aktId = v.Id;
-                    break;
-                }
-            }
-            return aktId;
-        }
+                var result = MessageBox.Show($"Biztosan módosítod a(z) {utca.Utca}(án) található házat?", "Megerősítés", MessageBoxButton.YesNo);
 
-        private async void GetVarosok()
-        {
-            try
-            {
-                string url = $"{MainWindow.sharedClient.BaseAddress}api/Varosok/{MainWindow.uId}?token={MainWindow.uId}"; //A backenden a végpont urlje
-                List<Varosok> result = await MainWindow.sharedClient.GetFromJsonAsync<List<Varosok>>(url);
-                if (result is not null)
+                if (result == MessageBoxResult.Yes)
                 {
-                    varosok = (List<Varosok>)result;
-                    varosnevek = result.Select(v => v.Varos).ToList();
-                    cbxVarosID.ItemsSource = varosnevek;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void EMentes_Click(object sender, RoutedEventArgs e)
-        {
-            string salt = MainWindow.GenerateSalt();
-            if (tbxUtca.Text is not null &&
-                tbxMeret.Text is not null &&
-                cbxSzobakSzama.SelectedValue is not null &&
-                tbxAr.Text is not null &&
-                tbxLeiras.Text is not null &&
-                cbxVarosID.SelectedValue is not null &&
-                cbxFelhasznaloID.SelectedValue is not null
-                )
-            {
-                try
-                {
-                    Lakasok newlakas = new()
+                    try
                     {
-                        Id = 0,
-                        Utca = tbxUtca.Text,
-                        Meret = int.Parse(tbxMeret.Text),
-                        SzobakSzama = int.Parse(cbxSzobakSzama.Text),
-                        Ar = int.Parse(tbxAr.Text),
-                        Leiras = tbxLeiras.Text,
-                        FelhasznaloId = UserKereses(cbxFelhasznaloID.Text),
-                        VarosId = VarosKereses(cbxVarosID.Text),
-                        Eladasoks = false
-                    };
-                    //string toSend = JsonSerializer.Serialize(newlakas, JsonSerializerOptions.Default);
-                    //var content = new StringContent(toSend, Encoding.UTF8, "application/json");
-                    //var response = await client.PostAsync($"api/Lakasok/{MainWindow.uId}?token={MainWindow.uId}", content);
-                    //string rcontent = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("sikeres változtatások");
+                        string token = MainWindow.uId;
+                        string updateUrl = $"api/Lakasok/{token}";
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                        var updatelakas = new Lakasok
+                        {
+                            Id = utca.Id,
+                            Utca = utca.Utca,
+                            Meret = utca.Meret,
+                            SzobakSzama = utca.SzobakSzama,
+                            Ar = utca.Ar,
+                            Leiras = utca.Leiras,
+                            Eladasoks = utca.Eladasoks,
+                            FelhasznaloId = utca.FelhasznaloId,
+                            VarosId = utca.VarosId,
+                        };
+
+
+                        var response = await client.PutAsJsonAsync(updateUrl,updatelakas);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Lakás sikeresen módosítva.");
+                            await LoadLakas();
+                        }
+                        else
+                        {
+                            string errorMsg = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Hiba történt: {response.StatusCode} - {errorMsg}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Hiba a módosítás során: {ex.Message}");
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Kitöltési hiba");
+                MessageBox.Show("Kérlek válassz ki egy lakást a módosításhoz!");
             }
         }
 
-        private void EMegse_Click(object sender, RoutedEventArgs e)
+        private async void Torles_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            if (dgrLakas.SelectedItem is Lakasok utca)
+            {
+                var result = MessageBox.Show($"Biztosan törlöd  a(z) {utca.Utca}(án) található házat?", "Megerősítés", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        string token = MainWindow.uId; 
+                        string deleteUrl = $"api/Lakasok/{token}, {utca.Id}";
+
+                        var response = await client.DeleteAsync(deleteUrl);
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Lakás sikeresen törölve.");
+                            await LoadLakas();
+                        }
+                        else
+                        {
+                            string errorMsg = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Hiba történt: {response.StatusCode} - {errorMsg}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Hiba a törlés során: {ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Kérlek válassz ki egy lakást a törléshez!");
+            }
         }
 
-        private void ETorles_Click(object sender, RoutedEventArgs e)
+
+        private void Megse_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("törlés sikeres");
+            Close();
         }
     }
 }

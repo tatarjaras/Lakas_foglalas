@@ -8,46 +8,43 @@
                 Title="EditUserWindow" Height="600" Width="500">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <StackPanel>
-            <Label>Felhasználónév:</Label>
-            <ComboBox x:Name="cbxFelhasznaloNev" SelectionChanged="cbxFelhasznaloNev_SelectionChanged"/>
-            <Label>Jelszó:</Label>
-            <PasswordBox x:Name="pbxJelszo1" Password="Titkos1"/>
-            <Label>Jelszó még egyszer:</Label>
-            <PasswordBox x:Name="pbxJelszo2" Password="Titkos1"/>
-            <Label>Teljes név:</Label>
-            <TextBox x:Name="tbxTeljesNev" Text="Új ember"/>
-            <Label>Email:</Label>
-            <TextBox x:Name="tbxEmail"/>
-            <Label>Jogosultság:</Label>
-            <ComboBox x:Name="cbxPermission">
-                <ComboBoxItem Content="9"/>
-                <ComboBoxItem Content="1"/>
-            </ComboBox>
-            <CheckBox x:Name="cbActive" Content="Aktív" IsChecked="True"/>
-            <Label>Profilkép</Label>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Image x:Name="imgProfilkep"
-               Width="100"
-               Height="100"
-               Stretch="UniformToFill"
-               Margin="5"/>
-                <TextBlock x:Name="tbProfilkep"
-                   Text="Nincs kiválasztva"
-                   VerticalAlignment="Center"
-                   Margin="5"/>
-                <Button Content="Kép kiválasztása"
-                Height="40"
-                Padding="10"
-                Click="ImageSelect_Click"
-                Margin="5"/>
-            </StackPanel>
-        </StackPanel>
+        <Button x:Name="btnBetoltes"
+        Content="Betöltés"
+        Click="btnBetoltes_Click"
+        Width="100"
+        Margin="10"/>
+        <DataGrid x:Name="dgrUsers"
+          Grid.Row="1"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          CanUserDeleteRows="False"
+          CanUserReorderColumns="False"
+          CanUserResizeRows="False"
+          CanUserResizeColumns="False"
+          CanUserSortColumns="False"
+          SelectionMode="Single"
+          SelectionUnit="FullRow"
+          Grid.RowSpan="2"
+          >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Felhasználónév"
+                            Binding="{Binding LoginNev}"/>
+                <DataGridTextColumn Header="Teljes név"
+                            Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Email"
+                            Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Jogosultsag"
+                            Binding="{Binding PermissionId}"/>
+                <DataGridCheckBoxColumn Header="Aktív"
+                            Binding="{Binding Active}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Módosítás" Margin="5" Padding="10" Click="Modositas_Click"/>
             <Button Content="Törlés" Margin="5" Padding="10" Click="Torles_Click"/>
             <Button Content="Mésge" Margin="5" Padding="10" Click="Megse_Click"/>
