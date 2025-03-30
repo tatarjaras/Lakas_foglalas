@@ -114,7 +114,7 @@ namespace LakasfoglalasLoginClient.userManagement
                     {
                         try
                         {
-                            string token = MainWindow.uId; // Feltételezve, hogy az uId a token
+                            string token = MainWindow.uId;
                             string deleteUrl = $"api/User/{token}, {selectedUser.Id}";
 
                             var response = await client.DeleteAsync(deleteUrl);
@@ -122,7 +122,7 @@ namespace LakasfoglalasLoginClient.userManagement
                             if (response.IsSuccessStatusCode)
                             {
                                 MessageBox.Show("Felhasználó sikeresen törölve.");
-                                await LoadUsers(); // Lista frissítése
+                                await LoadUsers();
                             }
                             else
                             {

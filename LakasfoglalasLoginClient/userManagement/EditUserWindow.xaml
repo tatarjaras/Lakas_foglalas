@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LakasfoglalasLoginClient.userManagement"
         mc:Ignorable="d"
-                Title="EditUserWindow" Height="600" Width="500">
+                Title="EditUserWindow" Height="400" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
