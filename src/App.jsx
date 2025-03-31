@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Login } from "./Login";
 import { Link } from "react-router-dom";
-import { Registratio } from "./Registratio";
+import { Registration } from "./Registration";
 import { Hazak } from "./Hazak";
 import { Feltolt } from "./Feltolt";
 import { Vasarlas } from "./Vasarlas";
@@ -80,7 +80,7 @@ export const App = () => {
                 <NavLink to="/Hazak" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Lakások</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/Registratio" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Regisztráció</NavLink>
+                <NavLink to="/Registration" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Regisztráció</NavLink>
               </li>
               
             </ul>
@@ -99,7 +99,7 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/Feltolt" element={<Feltolt />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/Registratio" element={<Registratio />} />
+            <Route path="/Registration" element={<Registration />} />
             <Route path="/Hazak" element={<Hazak />} />
             <Route path="/Vasarlas" element={<Vasarlas />} />
           </Routes>
