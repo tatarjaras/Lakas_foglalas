@@ -35,7 +35,7 @@ export const Hazak = () => {
                     <p className="card-text text-muted  text-end">Szobák száma: {lakas.szobakSzama}db</p>
                     <p className="card-text text-muted  text-end">Ár: {lakas.ar}.FT</p>
                     <p className="card-text text-muted  text-end">Leirás: {lakas.leiras}</p>
-                    <p className="card-text text-muted  text-end">Város: {lakas.varosId}</p>
+                    
                     
                     <button className="btn btn-dark ms-3"> 
                       <Link className="nav-link" to="/Vasarlas">
@@ -51,3 +51,5 @@ export const Hazak = () => {
         </div>
     );
 };
+
+//<p className="card-text text-muted  text-end">Város: {lakas.varosId}</p>
