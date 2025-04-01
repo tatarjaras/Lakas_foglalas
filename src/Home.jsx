@@ -11,6 +11,11 @@ export const Home = () => {
       <h1 className="fw-bold">Isten hozta az Indoors Kft. oldalán.</h1>
       <p className="mt-3 lead text-gray-800 dark:text-gray-200">
       Weboldalunkon egyszerűen és gyorsan vásárolhatsz vagy értékesíthetsz ingatlanokat, a legjobb ajánlatok és lehetőségek érdekében.
+      <br/> 
+      Elérési adataink:
+      <br/>
+      Telefonszám: 0670 5614500
+      <br/>
       </p>
       </div>
 
