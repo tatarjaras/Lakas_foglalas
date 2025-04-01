@@ -14,7 +14,7 @@ export const Home = () => {
       <br/> 
       Elérési adataink:
       <br/>
-      Telefonszám: 0670 5614500
+      <h4>Telefonszám: 0670 5614500</h4>
       <br/>
       </p>
       </div>
