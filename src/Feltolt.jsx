@@ -102,6 +102,7 @@ export const Feltolt = () => {
                     }}>
                         <h2>Lakás feltöltése sikeres</h2>
                         <p>A lakás adatai sikeresen feltöltve!</p>
+                        <p>A lakás néhány napon belül átvizsgálás után felkerül az oldalra</p>
                         <button
                             style={{
                                 marginTop: "10px",

@@ -64,10 +64,10 @@ export const Registration = () => {
     } catch (error) {
       if (error.response) {
         console.error("Regisztrációs hiba:", error.response.data);
-        alert(`Hiba történt: ${error.response.data?.message || "Ismeretlen hiba"}`);
+        alert(`Az oldal még fejlesztés alatt ha bármi hibát vél felfedezni regisztációja során kérjük hivjon minket: 06-70-561-4500`);
       } else if (error.request) {
         console.error("Hálózati hiba:", error.message);
-        alert("Nem sikerült csatlakozni a szerverhez. Ellenőrizd, hogy a backend fut-e!");
+        alert("Nem sikerült csatlakozni a szerverhez.");
       } else {
         console.error("Hiba:", error.message);
         alert("Ismeretlen hiba történt.");
